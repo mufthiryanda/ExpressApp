@@ -1,7 +1,6 @@
 const call = require ('express');
-const {Fragment} = require("react");
 const connect = call();
-const port = 3001;
+const port = process.env.PORT || 3000;
 
 connect.set('view engine', 'ejs');
 
@@ -14,9 +13,9 @@ connect.get('/about',(req, res) =>{
 });
 connect.use('/',(req,res)=>{
 res.status(404);
-res.sendFile('views/404.html', {root: __dirname});
+res.sendFile('views/404.html', {root: __dirname})
 });
 
-connect.listen(port, () => {
-console.log('Server Ready');
-});
+connect.listen(port);
+ 
+console.log('Listening on localhost:'+ port);
